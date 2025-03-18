@@ -1,0 +1,52 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&family=Outfit:wght@100..900&display=swap");
+
+.attribution {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  font-size: 11px;
+  text-align: center;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #d5e1ef;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Outfit", sans-serif;
+  box-sizing: border-box;
+}
+
+.container {
+  padding: 16px 16px 40px;
+  border-radius: 20px;
+  background-color: #fff;
+  text-align: center;
+}
+.img {
+  width: 288px;
+  height: 288px;
+  border-radius: 10px;
+}
+
+.text-container {
+  width: 256px;
+  margin: 0 auto;
+}
+.text-heading {
+  color: #1f314f;
+  font-size: 22px;
+  line-height: 1.2;
+}
+.text-paragraph {
+  color: #68778d;
+  line-height: 1.4;
+  font-size: 15px;
+  letter-spacing: 0.2px;
+}
