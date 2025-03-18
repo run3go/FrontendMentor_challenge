@@ -70,6 +70,12 @@ body {
   font-size: 24px;
 }
 
+.text-heading:focus,
+.text-heading:active,
+.text-heading:hover {
+  color: hsl(47, 88%, 63%);
+}
+
 .text-paragraph {
   font-size: 16px;
   font-weight: medium;
