@@ -1,0 +1,78 @@
+@import url("https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Sans+KR:wght@100..900&family=Outfit:wght@100..900&display=swap");
+
+.attribution {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  font-size: 11px;
+  text-align: center;
+  color: #fff;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background-color: hsl(0, 0%, 8%);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  background-color: hsl(0, 0%, 12%);
+  border-radius: 10px;
+  padding: 35px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  color: hsl(0, 0%, 100%);
+}
+
+.userImage {
+  width: 80px;
+  height: 80px;
+  border-radius: 100%;
+}
+
+.userInfo {
+  line-height: 1.8;
+  text-align: center;
+}
+.userInfo .info-name {
+  font-size: 25px;
+  font-weight: 400;
+}
+.userInfo .info-location {
+  font-size: 14px;
+  font-weight: 600;
+  color: hsl(75, 94%, 57%);
+}
+.selfDescription {
+  color: #d1d1d1;
+  letter-spacing: -0.7px;
+  font-size: 14px;
+}
+
+.socialLink-list {
+  width: 275px;
+}
+
+.socialLink-list li {
+  background: hsl(0, 0%, 20%);
+  margin-bottom: 14px;
+  padding: 14px 0;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+}
