@@ -33,6 +33,7 @@ body {
 }
 
 .container {
+  width: 600px;
   background-color: hsl(0, 0%, 100%);
   border-radius: 20px;
   display: flex;
@@ -49,7 +50,7 @@ body {
   width: 300px;
   display: flex;
   flex-direction: column;
-  padding: 30px 25px;
+  padding: 30px;
   gap: 20px;
 }
 .product-box .category {
@@ -82,6 +83,7 @@ body {
   text-decoration: line-through;
 }
 .product-box .addToCartBtn {
+  width: 100%;
   background-color: hsl(158, 36%, 37%);
   padding: 20px 40px;
   border: none;
@@ -100,4 +102,27 @@ body {
   height: 16px;
   margin-right: 15px;
   vertical-align: middle;
+}
+.product-box .addToCartBtn:hover {
+  background-color: hsl(158, 42%, 18%);
+  cursor: pointer;
+}
+
+@media (max-width: 375px) {
+  body {
+    padding: 20px;
+  }
+  .container {
+    flex-direction: column;
+  }
+  .perfumeImg {
+    background: url(images/image-product-mobile.jpg);
+    background-size: cover;
+    border-radius: 20px 20px 0 0;
+    width: 100%;
+    height: 240px;
+  }
+  .product-box {
+    width: 100%;
+  }
 }
