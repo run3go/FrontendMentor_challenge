@@ -19,6 +19,7 @@
 }
 
 body {
+  position: relative;
   font-family: "Poppins", sans-serif;
   font-size: 15px;
   color: hsl(212, 6%, 44%);
@@ -35,7 +36,7 @@ header {
   width: 500px;
 }
 header span {
-  font-size: 30px;
+  font-size: 2em;
   font-weight: 200;
 }
 header h1 {
@@ -48,7 +49,7 @@ header p {
 }
 
 .container {
-  margin-top: 50px;
+  margin-top: 3em;
   display: flex;
   align-items: center;
   gap: 30px;
@@ -73,17 +74,42 @@ header p {
   background: url(images/icon-calculator.svg) no-repeat;
 }
 
-.left,
-.right,
-.top,
-.bottom {
-  width: 350px;
-  height: 250px;
+.list-box {
+  width: 23.3em;
+  height: 16.6em;
   padding: 30px;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.1), 0 10px 10px rgba(0, 0, 0, 0.1);
-  background-position: calc(100% - 30px) calc(100% - 50px);
+  background-position: calc(90%) calc(80%);
 }
 
 .container p {
-  font-size: 13px;
+  font-size: 0.86rem;
+}
+
+@media (max-width: 375px) {
+  body {
+    height: 100%;
+    font-size: 13px;
+    padding: 30px 0;
+  }
+  header {
+    width: 80%;
+  }
+  header span,
+  header h1 {
+    font-size: 24px;
+  }
+  header p {
+    font-size: 15px;
+  }
+
+  .container {
+    flex-direction: column;
+  }
+
+  .list-box {
+    justify-content: center;
+    width: 23em;
+    height: 17em;
+  }
 }
