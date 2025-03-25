@@ -1,0 +1,162 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
+
+.attribution {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  font-size: 11px;
+  text-align: center;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  position: relative;
+  font-size: 13px;
+  font-family: "Manrope", sans-serif;
+  font-weight: 500;
+  background-color: hsl(210, 46%, 95%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  display: flex;
+}
+
+.contents-img {
+  width: 340px;
+  height: 280px;
+  border-radius: 10px 0 0 10px;
+  margin-right: -60px;
+}
+
+.contents {
+  position: relative;
+  width: 445px;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 0 10px 10px 0;
+}
+.contents h1 {
+  font-size: 1.3rem;
+  color: hsl(217, 19%, 35%);
+}
+.contents p {
+  font-size: 0.9rem;
+  color: hsl(214, 17%, 51%);
+  margin: 20px 0;
+}
+
+.avatar-img {
+  float: left;
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  margin-right: 15px;
+}
+.name {
+  display: block;
+  color: hsl(217, 19%, 35%);
+  font-weight: 700;
+}
+.date {
+  clear: both;
+  color: hsl(212, 23%, 69%);
+}
+
+.share-box {
+  position: absolute;
+  bottom: 85px;
+  right: -80px;
+  padding: 15px 35px;
+  background: hsl(217, 19%, 35%);
+  border-radius: 10px;
+  z-index: 1;
+  display: none;
+  align-items: center;
+  gap: 15px;
+}
+.share-box::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  right: 115px;
+  display: block;
+  width: 20px;
+  height: 20px;
+  background: hsl(217, 19%, 35%);
+  transform: rotate(45deg);
+  z-index: -1;
+}
+.share-box span {
+  color: hsl(212, 23%, 69%);
+  letter-spacing: 3px;
+  line-height: 1.7;
+}
+
+.share-btn {
+  position: absolute;
+  right: 30px;
+  bottom: 30px;
+  border-radius: 100%;
+  text-indent: -9999px;
+  width: 30px;
+  height: 30px;
+  background-color: hsl(210, 46%, 95%);
+}
+
+.share-btn::before {
+  position: absolute;
+  right: 7px;
+  bottom: 9px;
+  content: "";
+  width: 15px;
+  height: 13px;
+  background: url(images/icon-share.svg) no-repeat;
+}
+
+@media (max-width: 375px) {
+  * {
+    font-size: 11px;
+  }
+  .container {
+    flex-direction: column;
+    width: 80%;
+  }
+  .contents-img {
+    width: 100%;
+    border-radius: 10px 10px 0 0;
+  }
+  .contents {
+    width: 100%;
+    border-radius: 0 0 10px 10px;
+  }
+  .contents p {
+    font-size: 1.1rem;
+  }
+  .share-box {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 25px 30px;
+    border-radius: 0 0 10px 10px;
+  }
+  .share-box::after {
+    display: none;
+  }
+
+  .share-btn {
+    z-index: 1;
+    bottom: 22px;
+  }
+}
