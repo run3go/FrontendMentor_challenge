@@ -1,0 +1,164 @@
+@import url("https://fonts.googleapis.com/css2?family=Red+Hat+Text:ital,wght@0,300..700;1,300..700&display=swap");
+
+.attribution {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  font-size: 11px;
+  text-align: center;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  list-style: none;
+}
+
+body {
+  position: relative;
+  height: 100%;
+  font-family: "Red Hat Text", sans-serif;
+  font-size: 16px;
+  background-color: hsl(20, 50%, 98%);
+
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  padding: 90px;
+}
+
+.main-contents {
+  margin-right: 50px;
+}
+
+.main-contents h1 {
+  font-size: 2rem;
+  line-height: 2rem;
+  margin-bottom: 30px;
+}
+.main-contents .menu-list {
+  display: grid;
+  grid-template-columns: repeat(3, 32%);
+  gap: 20px;
+}
+.menu-list li {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.menu-list li > img {
+  width: 250px;
+  height: 240px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+}
+.menu-list li .category {
+  color: hsl(7, 20%, 60%);
+  font-size: 0.8rem;
+}
+.menu-list li .name {
+  font-weight: 600;
+}
+.menu-list li .price {
+  color: hsl(14, 86%, 42%);
+  font-weight: 600;
+}
+.menu-list li button {
+  font-weight: 600;
+
+  position: absolute;
+  bottom: 70px;
+  left: 45px;
+  background-color: #fff;
+  width: 158px;
+  padding: 10px;
+  border-radius: 20px;
+  border: 1px solid hsl(12, 20%, 44%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.menu-list li button img {
+  margin-right: 10px;
+}
+
+.cart-box {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  padding: 20px;
+  width: 380px;
+  align-items: center;
+}
+.cart-box h2,
+.cart-box .qty {
+  color: hsl(14, 86%, 42%);
+  font-weight: 700;
+  font-size: 1.4rem;
+  align-self: start;
+}
+.cart-box > img {
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+.cart-box span {
+  display: inline-block;
+  color: hsl(12, 20%, 44%);
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+
+.cart-box__active {
+}
+.cart-box__active.on {
+}
+.cart-box-list {
+}
+.total-price-box {
+  display: none;
+}
+.total-price-box span {
+}
+.total-price-box span.total-price-text {
+}
+
+.delivery-info {
+  display: none;
+}
+.delivery-info img {
+}
+.delivery-info span {
+}
+.delivery-info .confirm-btn {
+}
+
+.confirmation {
+  display: none;
+}
+.confirmation img {
+}
+.confirmation-txt {
+}
+.confirmation-txt h2 {
+}
+.confirmation-txt p {
+}
+
+.order-box {
+}
+.order-list {
+}
+.order-list li {
+}
+.total-price-box span {
+}
+.total-price-box span.total-price-txt {
+}
+.new-order-btn {
+}
