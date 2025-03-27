@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
       this.category = category;
       this.price = price.toFixed(2);
       this.img = img;
-      this.count = 1;
+      this.qty = 1;
       this.element;
       this.init();
     }
@@ -60,51 +60,49 @@ document.addEventListener("DOMContentLoaded", () => {
       btn.classList.add("on");
       const decreaseBtn = document.createElement("button");
       const increaseBtn = document.createElement("button");
-      const qty = createSpan(this.count, "qty");
+      const qty = createSpan(this.qty, "qty");
 
       decreaseBtn.classList.add("decrease-btn");
       increaseBtn.classList.add("increase-btn");
 
       decreaseBtn.addEventListener("click", (e) => {
         e.preventDefault();
-        if (this.count !== 1) {
-          this.count--;
+        if (this.qty === 1) {
+          this.makeBtn();
+          cart.remove(this.name);
+        } else {
+          this.qty--;
+          btn.getElementsByClassName("qty")[0].textContent = this.qty;
+          cart.add(this);
         }
-        btn.getElementsByClassName("qty")[0].textContent = this.count;
-        cart.add(this.name, {
-          qty: this.count,
-          price: this.price,
-          sum: this.count * this.price,
-        });
       });
+
       increaseBtn.addEventListener("click", (e) => {
         e.preventDefault();
-        this.count++;
-        btn.getElementsByClassName("qty")[0].textContent = this.count;
-        cart.add(this.name, {
-          qty: this.count,
-          price: this.price,
-          sum: this.count * this.price,
-        });
+        this.qty++;
+        btn.getElementsByClassName("qty")[0].textContent = this.qty;
+        cart.add(this);
       });
 
       btn.append(decreaseBtn);
       btn.append(qty);
       btn.append(increaseBtn);
 
-      cart.add(this.name, {
-        qty: this.count,
-        price: this.price,
-        sum: this.count * this.price,
-      });
+      cart.add(this);
     }
   }
 
   const cart = {
     list: new Map(),
 
-    add: function (name, info) {
-      this.list.set(name, info);
+    add: function (data) {
+      this.list.set(data.name, data);
+      this.viewList();
+    },
+
+    remove: function (name) {
+      this.list.delete(name);
+      console.log(this.list);
       this.viewList();
     },
 
@@ -115,13 +113,16 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementsByClassName("cart-box__active")[0];
 
       cartList.innerHTML = "";
+      const totalQty = document.querySelector(".cart-box .qty");
+      const totalPrice = document.querySelector(".total-price-txt");
+      totalQty.textContent = [...this.list.values()].reduce(
+        (acc, cur) => acc + cur.qty,
+        0
+      );
+      totalPrice.textContent = [...this.list.values()]
+        .reduce((acc, cur) => acc + cur.price * cur.qty, 0)
+        .toFixed(2);
       if (this.list.size) {
-        const cartQty = document.querySelector(".cart-box .qty");
-        cartQty.textContent = [...this.list.values()].reduce(
-          (acc, cur) => acc + cur.qty,
-          0
-        );
-
         img.style.display = "none";
         span.style.display = "none";
         this.list.forEach((item, key) => {
@@ -133,6 +134,14 @@ document.addEventListener("DOMContentLoaded", () => {
           const sumPrice = item.qty * item.price;
           const sum = createSpan(sumPrice.toFixed(2), "sum");
           const removeBtn = document.createElement("button");
+
+          removeBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            this.list.delete(key);
+            this.viewList();
+            item.makeBtn();
+            item.qty = 1;
+          });
 
           liElement.append(name);
           liElement.append(qty);

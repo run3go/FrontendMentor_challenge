@@ -89,6 +89,10 @@ body {
   align-items: center;
   justify-content: center;
 }
+.menu-list li div:hover {
+  color: hsl(14, 86%, 42%);
+  border: 1px solid hsl(14, 86%, 42%);
+}
 .menu-list li div img {
   margin-right: 10px;
 }
@@ -100,7 +104,8 @@ body {
   border: none;
   cursor: default;
 }
-.decrease-btn {
+.decrease-btn,
+.increase-btn {
   width: 16px;
   height: 16px;
   border: 1px solid #fff;
@@ -117,17 +122,6 @@ body {
   height: 2px;
   display: block;
   background: url(assets/images/icon-decrement-quantity.svg) no-repeat;
-}
-.increase-btn {
-  width: 16px;
-  height: 16px;
-  border: 1px solid #fff;
-  background-color: hsl(14, 86%, 42%);
-  border-radius: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
 }
 .increase-btn::after {
   content: "";
@@ -213,6 +207,12 @@ body {
   display: block;
   background: url(assets/images/icon-remove-item.svg) no-repeat;
 }
+.cart-box-list li button:hover {
+  border-color: hsl(14, 65%, 9%);
+}
+.cart-box-list li button:hover::after {
+  filter: brightness(50%);
+}
 
 .total-price-box {
   display: flex;
@@ -223,7 +223,12 @@ body {
   color: hsl(14, 65%, 9%);
   font-weight: 400;
 }
-.total-price-box span.total-price-text {
+.total-price-box span.total-price-txt {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+.total-price-box span.total-price-txt::before {
+  content: "$";
 }
 
 .delivery-info {
@@ -242,6 +247,10 @@ body {
   border-radius: 30px;
   border: none;
   padding: 15px 0;
+  cursor: pointer;
+}
+.confirm-btn:hover {
+  filter: brightness(90%);
 }
 
 .confirmation {
