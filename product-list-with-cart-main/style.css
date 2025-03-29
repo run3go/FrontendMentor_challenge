@@ -266,6 +266,7 @@ li .sum::before {
 .order-box {
   background-color: hsl(20, 50%, 98%);
   padding: 0 25px;
+  overflow-y: scroll;
 }
 .order-list li {
   position: relative;
