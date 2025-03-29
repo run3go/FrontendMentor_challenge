@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const menuList = document.getElementsByClassName("menu-list")[0];
   const cartList = document.getElementsByClassName("cart-box-list")[0];
+  const orderList = document.getElementsByClassName("order-list")[0];
 
   class menu {
     constructor(name, category, price, img) {
@@ -22,11 +23,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
       menuImg.src = this.img + "desktop.jpg";
       menuImg.alt = this.name;
-      this.element.append(menuImg);
 
-      this.element.append(category);
-      this.element.append(menuName);
-      this.element.append(menuPrice);
+      [menuImg, category, menuName, menuPrice].forEach((item) =>
+        this.element.append(item)
+      );
 
       menuList.append(this.element);
       this.makeBtn();
@@ -38,6 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const img = document.createElement("img");
       img.src = "assets/images/icon-add-to-cart.svg";
       img.alt = "addToCart";
+
       addtoCartBtn.append(img);
       addtoCartBtn.append("Add to Cart");
 
@@ -60,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
       btn.classList.add("on");
       const decreaseBtn = document.createElement("button");
       const increaseBtn = document.createElement("button");
-      const qty = createSpan(this.qty, "qty");
+      const qty = createSpan(this.qty, "menu-qty");
 
       decreaseBtn.classList.add("decrease-btn");
       increaseBtn.classList.add("increase-btn");
@@ -72,7 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
           cart.remove(this.name);
         } else {
           this.qty--;
-          btn.getElementsByClassName("qty")[0].textContent = this.qty;
+          btn.getElementsByClassName("menu-qty")[0].textContent = this.qty;
           cart.add(this);
         }
       });
@@ -80,13 +81,11 @@ document.addEventListener("DOMContentLoaded", () => {
       increaseBtn.addEventListener("click", (e) => {
         e.preventDefault();
         this.qty++;
-        btn.getElementsByClassName("qty")[0].textContent = this.qty;
+        btn.getElementsByClassName("menu-qty")[0].textContent = this.qty;
         cart.add(this);
       });
 
-      btn.append(decreaseBtn);
-      btn.append(qty);
-      btn.append(increaseBtn);
+      [decreaseBtn, qty, increaseBtn].forEach((item) => btn.append(item));
 
       cart.add(this);
     }
@@ -94,6 +93,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const cart = {
     list: new Map(),
+
+    reset: function () {
+      this.list.clear();
+      this.viewList();
+    },
 
     add: function (data) {
       this.list.set(data.name, data);
@@ -113,7 +117,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementsByClassName("cart-box__active")[0];
 
       cartList.innerHTML = "";
-      const totalQty = document.querySelector(".cart-box .qty");
+      const totalQty = document.querySelector(".total-qty");
       const totalPrice = document.querySelector(".total-price-txt");
       totalQty.textContent = [...this.list.values()].reduce(
         (acc, cur) => acc + cur.qty,
@@ -128,7 +132,7 @@ document.addEventListener("DOMContentLoaded", () => {
         this.list.forEach((item, key) => {
           const liElement = document.createElement("li");
           const name = createSpan(key, "name");
-          const qty = createSpan(item.qty + "x", "qty");
+          const qty = createSpan(item.qty, "qty");
           const price = createSpan(item.price, "price");
 
           const sumPrice = item.qty * item.price;
@@ -143,11 +147,9 @@ document.addEventListener("DOMContentLoaded", () => {
             item.qty = 1;
           });
 
-          liElement.append(name);
-          liElement.append(qty);
-          liElement.append(price);
-          liElement.append(sum);
-          liElement.append(removeBtn);
+          [name, qty, price, sum, removeBtn].forEach((el) =>
+            liElement.append(el)
+          );
           cartList.append(liElement);
         });
         cartBoxActive.classList.add("on");
@@ -158,6 +160,63 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     },
   };
+
+  const confirmBtn = document.getElementsByClassName("confirm-btn")[0];
+  const newOrderBtn = document.getElementsByClassName("new-order-btn")[0];
+  const overlay = document.getElementsByClassName("overlay")[0];
+  const confirmation = document.getElementsByClassName("confirmation")[0];
+  const totalPrice = document.getElementsByClassName("total-price-txt")[1];
+
+  confirmBtn.addEventListener("click", viewConfirmList);
+  newOrderBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    overlay.style.display = "none";
+    confirmation.style.display = "none";
+    [
+      waffle,
+      creme,
+      macaron,
+      tiramisu,
+      baklava,
+      pie,
+      cake,
+      brownie,
+      pannaCotta,
+    ].forEach((instance) => {
+      instance.qty = 1;
+      instance.makeBtn();
+    });
+    cart.reset();
+  });
+
+  function viewConfirmList() {
+    overlay.style.display = "block";
+    confirmation.style.display = "flex";
+    orderList.innerHTML = "";
+
+    cart.list.forEach((item) => {
+      const liElement = document.createElement("li");
+      const thumbnail = document.createElement("img");
+      thumbnail.src = item.img + "thumbnail.jpg";
+      thumbnail.alt = item.name;
+
+      const infoBox = document.createElement("div");
+      const name = createSpan(item.name, "name");
+      const qty = createSpan(item.qty, "qty");
+      const price = createSpan(item.price, "price");
+
+      [name, qty, price].forEach((el) => infoBox.append(el));
+
+      const sumPrice = item.qty * item.price;
+      const sum = createSpan(sumPrice.toFixed(2), "sum");
+
+      [thumbnail, infoBox, sum].forEach((el) => liElement.append(el));
+      orderList.append(liElement);
+    });
+    const cartTotalPrice = (totalPrice.textContent =
+      document.getElementsByClassName("total-price-txt")[0]);
+    totalPrice.textContent = cartTotalPrice.textContent;
+  }
 
   function createSpan(text, className) {
     const spanElement = document.createElement("span");

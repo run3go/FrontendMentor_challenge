@@ -139,7 +139,7 @@ body {
   width: 380px;
 }
 .cart-box h2,
-.cart-box .qty {
+.cart-box .total-qty {
   color: hsl(14, 86%, 42%);
   font-weight: 700;
   font-size: 1.4rem;
@@ -157,7 +157,6 @@ body {
   font-size: 0.8rem;
   align-self: center;
 }
-
 .cart-box__active {
   display: none;
 }
@@ -169,22 +168,27 @@ body {
   padding: 15px 0;
   border-bottom: 1px solid hsl(13, 31%, 94%);
 }
-.cart-box-list li .name {
-  color: #000;
+li span.name {
+  color: hsl(14, 65%, 9%);
   display: block;
+  margin-bottom: 10px;
 }
-.cart-box-list li .qty {
+li span.qty {
+  color: hsl(14, 86%, 42%);
   font-size: 0.8rem;
   margin-right: 10px;
 }
-.cart-box-list li .price {
+li span.qty::after {
+  content: "x";
+}
+li .price {
   color: hsl(14, 25%, 72%);
   margin-right: 7px;
 }
-.cart-box-list li .price::before {
+li .price::before {
   content: "@ $";
 }
-.cart-box-list li .sum::before {
+li .sum::before {
   content: "$";
 }
 .cart-box-list li button {
@@ -213,6 +217,75 @@ body {
 .cart-box-list li button:hover::after {
   filter: brightness(50%);
 }
+.delivery-info {
+  display: flex;
+  background-color: hsl(20, 50%, 98%);
+  padding: 20px 30px;
+}
+.delivery-info span {
+  color: hsl(14, 65%, 9%);
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+}
+.confirmation {
+  display: none;
+  position: fixed;
+  width: 590px;
+  height: 685px;
+  background-color: #fff;
+  border-radius: 30px;
+  z-index: 101;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 40px;
+
+  flex-direction: column;
+  gap: 30px;
+}
+.confirmation img {
+  width: 48px;
+  height: 48px;
+}
+.confirmation-txt h2 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+.confirmation-txt p {
+  color: hsl(12, 20%, 44%);
+}
+
+.order-box {
+  background-color: hsl(20, 50%, 98%);
+  padding: 0 25px;
+}
+.order-list li {
+  position: relative;
+  padding: 25px 0;
+  border-bottom: 1px solid hsl(13, 31%, 94%);
+  display: flex;
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+.order-list li img {
+  margin-right: 15px;
+}
+.order-list li .sum {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+
+/* 총 금액 */
 
 .total-price-box {
   display: flex;
@@ -231,17 +304,10 @@ body {
   content: "$";
 }
 
-.delivery-info {
-  display: flex;
-  background-color: hsl(20, 50%, 98%);
-  padding: 20px 30px;
-}
-.delivery-info span {
-  color: hsl(14, 65%, 9%);
-}
-.confirm-btn {
+/* 버튼 */
+.btn {
   width: 100%;
-  margin-top: 20px;
+  margin-top: 15px;
   color: #fff;
   background-color: hsl(14, 86%, 42%);
   border-radius: 30px;
@@ -249,31 +315,6 @@ body {
   padding: 15px 0;
   cursor: pointer;
 }
-.confirm-btn:hover {
+.btn:hover {
   filter: brightness(90%);
-}
-
-.confirmation {
-  display: none;
-}
-.confirmation img {
-}
-.confirmation-txt {
-}
-.confirmation-txt h2 {
-}
-.confirmation-txt p {
-}
-
-.order-box {
-}
-.order-list {
-}
-.order-list li {
-}
-.total-price-box span {
-}
-.total-price-box span.total-price-txt {
-}
-.new-order-btn {
 }
